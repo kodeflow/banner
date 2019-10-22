@@ -613,6 +613,7 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
             indicatorImages.get((position - 1 + count) % count).setImageResource(mIndicatorSelectedResId);
             indicatorImages.get((position - 1 + count) % count).setLayoutParams(Selectedparams);
             lastPosition = position;
+            updateIndicators();
         }
         if (position == 0) position = count;
         if (position > count) position = 1;
@@ -634,6 +635,11 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
                 break;
         }
 
+    }
+
+    public void updateIndicators() {
+        indicatorImages.get((lastPosition - 1 + count) % count).setImageResource(mIndicatorUnselectedResId);
+        indicatorImages.get((position - 1 + count) % count).setImageResource(mIndicatorSelectedResId);
     }
 
     @Deprecated
